@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ticketapp/core/constants/color/color_theme.dart';
 import 'package:ticketapp/core/constants/image/image_constants.dart';
 import 'package:ticketapp/core/constants/text/text_constants.dart';
 import 'package:ticketapp/core/extension/context_extension.dart';

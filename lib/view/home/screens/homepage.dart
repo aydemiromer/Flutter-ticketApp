@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ticketapp/core/constants/color/color_theme.dart';
 import 'package:ticketapp/core/constants/text/text_constants.dart';
 import 'package:ticketapp/core/style/text_styles.dart';
+import 'package:ticketapp/product/widget/bottom_navigation.dart';
 import 'package:ticketapp/product/widget/box_image.dart';
 import 'package:ticketapp/core/extension/context_extension.dart';
 
@@ -9,6 +10,7 @@ class TicketHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationTool(),
       appBar: appbar,
       body: Padding(
         padding: context.paddingAllPage,
