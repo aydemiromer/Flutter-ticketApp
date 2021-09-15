@@ -7,7 +7,5 @@ class AppTextStyles {
     fontSize: 15,
   );
   static TextStyle titeStyle = TextStyle(
-    color: AppColor.textColor,
-    fontSize: 18,
-  );
+      color: AppColor.textColor, fontSize: 18, fontWeight: FontWeight.w700);
 }
