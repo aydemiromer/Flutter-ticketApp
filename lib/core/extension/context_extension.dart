@@ -23,7 +23,8 @@ extension ThemeExtension on BuildContext {
 }
 
 extension PaddingExtension on BuildContext {
-  EdgeInsets get paddingImage => EdgeInsets.fromLTRB(16, 20, 16, 24);
+  EdgeInsets get paddingImage => EdgeInsets.fromLTRB(0, 20, 16, 24);
+  EdgeInsets get paddingAllPage => EdgeInsets.only(left: 16);
   EdgeInsets get paddingLow => EdgeInsets.all(lowValue);
   EdgeInsets get paddingNormal => EdgeInsets.all(normalValue);
   EdgeInsets get paddingMedium => EdgeInsets.all(mediumValue);
