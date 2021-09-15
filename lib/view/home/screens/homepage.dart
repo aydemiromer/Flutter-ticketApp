@@ -60,7 +60,8 @@ class _TicketHomePageState extends State<TicketHomePage> {
               height: 12,
             ),
             Container(
-              height: 300,
+              height: context.highValue * 5,
+              width: context.width,
               child: ListView.builder(
                 itemCount: _ticket.length,
                 itemBuilder: (context, index) {
@@ -73,10 +74,14 @@ class _TicketHomePageState extends State<TicketHomePage> {
                         ),
                         title: Text(
                             " ${_ticket[index].route} /  ${_ticket[index].arrivalTime}-${_ticket[index].departureTime} "),
-                        subtitle: Text(_ticket[index].arrivalTime),
+                        subtitle: Text(
+                            "${_ticket[index].daysOfWeek[0]} - ${_ticket[index].daysOfWeek[1]} - ${_ticket[index].daysOfWeek[2]} - ${_ticket[index].daysOfWeek[3]}"),
                       ),
                       Divider(
                         height: 10,
+                        indent: 16,
+                        endIndent: 16,
+                        thickness: 1,
                       )
                     ],
                   );
