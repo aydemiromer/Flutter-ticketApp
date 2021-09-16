@@ -11,19 +11,14 @@ class StackImage extends StatelessWidget {
       height: context.highValue * 2.5,
       child: Stack(
         children: [
-          Padding(
-            padding: context.paddingImage,
-            child: Positioned(
-              child: Container(
-                width: context.width,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(ImageConstants.imageUrl),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: BorderRadius.circular(12),
-                ),
+          Container(
+            width: context.width,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(ImageConstants.imageUrl),
+                fit: BoxFit.cover,
               ),
+              borderRadius: BorderRadius.circular(12),
             ),
           ),
           Positioned(
