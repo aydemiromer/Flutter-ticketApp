@@ -27,7 +27,6 @@ class BottomNavigationTool extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     showDialog(
-                        barrierDismissible: false,
                         context: context,
                         builder: (context) {
                           return ShowmeCupertinoDialog();

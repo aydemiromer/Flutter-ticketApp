@@ -22,7 +22,7 @@ class StackImage extends StatelessWidget {
             ),
           ),
           Positioned(
-              top: 175,
+              top: context.highValue * 2,
               left: 32,
               child: Text(
                 AppTextConstants.imagetext,

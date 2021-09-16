@@ -14,7 +14,7 @@ class TicketHomePage extends StatefulWidget {
 }
 
 class _TicketHomePageState extends State<TicketHomePage> {
-  List<Data> _ticket = List<Data>();
+  List<Data> _ticket = <Data>[];
 
   @override
   void initState() {
@@ -69,7 +69,7 @@ class _TicketHomePageState extends State<TicketHomePage> {
               height: 12,
             ),
             Container(
-              height: context.highValue * 5,
+              height: context.height / 2,
               width: context.width,
               child: RefreshIndicator(
                 onRefresh: _refresh,
