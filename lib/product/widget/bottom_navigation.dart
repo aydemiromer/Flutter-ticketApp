@@ -1,8 +1,6 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:ticketapp/core/constants/color/color_theme.dart';
 import 'package:ticketapp/core/constants/text/text_constants.dart';
-import 'package:ticketapp/product/widget/alert_dialog.dart';
 import 'package:ticketapp/product/widget/cupertino_dialog.dart';
 
 class BottomNavigationTool extends StatelessWidget {
@@ -29,13 +27,10 @@ class BottomNavigationTool extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     showDialog(
+                        barrierDismissible: false,
                         context: context,
                         builder: (context) {
-                          if (!Platform.isIOS) {
-                            return ShowmeAlertDialog();
-                          } else {
-                            return ShowmeCupertinoDialog();
-                          }
+                          return ShowmeCupertinoDialog();
                         });
                   },
                   icon: Icon(Icons.description)),
