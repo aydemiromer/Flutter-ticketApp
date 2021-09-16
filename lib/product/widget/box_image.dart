@@ -16,7 +16,7 @@ class StackImage extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(ImageConstants.imageUrl),
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
               ),
               borderRadius: BorderRadius.circular(12),
             ),
