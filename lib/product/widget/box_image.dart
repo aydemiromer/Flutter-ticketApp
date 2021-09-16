@@ -8,7 +8,7 @@ class StackImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.highValue * 2.5,
+      height: context.height / 4,
       child: Stack(
         children: [
           Container(
@@ -22,7 +22,7 @@ class StackImage extends StatelessWidget {
             ),
           ),
           Positioned(
-              top: context.highValue * 2,
+              top: context.height / 5,
               left: 32,
               child: Text(
                 AppTextConstants.imagetext,
