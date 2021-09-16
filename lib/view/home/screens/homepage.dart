@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
 import '../../../core/constants/color/color_theme.dart';
 import '../../../core/constants/text/text_constants.dart';
 import '../../../core/extension/context_extension.dart';
@@ -113,7 +112,7 @@ class _TicketHomePageState extends State<TicketHomePage> {
 Widget get appbar => AppBar(
       backgroundColor: AppColor.primaryorange,
       leading: Icon(Icons.directions_bus),
-      title: Text(AppTextConstants.title),
+      title: Center(child: Text(AppTextConstants.title)),
       actions: [
         Icon(
           Icons.directions_bike,
