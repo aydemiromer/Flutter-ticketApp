@@ -68,37 +68,39 @@ class _TicketHomePageState extends State<TicketHomePage> {
             SizedBox(
               height: 12,
             ),
-            Container(
-              height: context.height / 2,
-              width: context.width,
-              child: RefreshIndicator(
-                onRefresh: _refresh,
-                child: ListView.builder(
-                  itemCount: _ticket.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        ListTile(
-                          leading: Icon(
-                            _ticket[index].tourType == 'Night'
-                                ? Icons.dark_mode
-                                : Icons.light_mode,
-                            color: AppColor.primaryorange,
+            Expanded(
+              child: Container(
+                height: context.height / 2.5,
+                width: context.width,
+                child: RefreshIndicator(
+                  onRefresh: _refresh,
+                  child: ListView.builder(
+                    itemCount: _ticket.length,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              _ticket[index].tourType == 'Night'
+                                  ? Icons.dark_mode
+                                  : Icons.light_mode,
+                              color: AppColor.primaryorange,
+                            ),
+                            title: Text(
+                                " ${_ticket[index].route} /  ${_ticket[index].departureTime}-${_ticket[index].arrivalTime} "),
+                            subtitle: Text(
+                                "${_ticket[index].daysOfWeek[0]} - ${_ticket[index].daysOfWeek[1]} - ${_ticket[index].daysOfWeek[2]} - ${_ticket[index].daysOfWeek[3]}"),
                           ),
-                          title: Text(
-                              " ${_ticket[index].route} /  ${_ticket[index].arrivalTime}-${_ticket[index].departureTime} "),
-                          subtitle: Text(
-                              "${_ticket[index].daysOfWeek[0]} - ${_ticket[index].daysOfWeek[1]} - ${_ticket[index].daysOfWeek[2]} - ${_ticket[index].daysOfWeek[3]}"),
-                        ),
-                        Divider(
-                          height: 10,
-                          indent: 16,
-                          endIndent: 16,
-                          thickness: 1,
-                        )
-                      ],
-                    );
-                  },
+                          Divider(
+                            height: 10,
+                            indent: 16,
+                            endIndent: 16,
+                            thickness: 1,
+                          )
+                        ],
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

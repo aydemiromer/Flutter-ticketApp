@@ -5,10 +5,9 @@ abstract class StringValidator {
 class NonEmptyStringValidator implements StringValidator {
   @override
   bool isValid(String value) {
-    return value.isNotEmpty || value.length > 5;
+    return value.isNotEmpty;
   }
 }
-
 class EmailAndPasswordValidators {
   final StringValidator emailValidator = NonEmptyStringValidator();
   final StringValidator passwordValidator = NonEmptyStringValidator();
@@ -16,3 +15,4 @@ class EmailAndPasswordValidators {
   final String invalidPasswordErrorText = 'Password can\'t be empty';
   final String invalidPasswordErrorText2 = 'Password 2 can\'t be empty';
 }
+

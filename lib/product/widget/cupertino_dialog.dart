@@ -1,9 +1,12 @@
+import 'dart:convert';
 import 'dart:io';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ticketapp/core/constants/color/color_theme.dart';
+import 'package:form_field_validator/form_field_validator.dart';
+import '../../core/constants/color/color_theme.dart';
 import '../../core/constants/text/text_constants.dart';
+import '../../view/home/screens/empty.dart';
 import '../service/validators.dart';
 import 'custom_sign_in_button.dart';
 
@@ -18,10 +21,44 @@ class _ShowmeCupertinoDialogState extends State<ShowmeCupertinoDialog> {
   final TextEditingController _passwordController = TextEditingController();
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
-  String get _email => _emailController.text;
-  String get _password => _passwordController.text;
+  String get email => _emailController.text;
+  String get password => _passwordController.text;
   bool _submitted = false;
   bool _isLoading = false;
+  GlobalKey<FormState> formkey = GlobalKey<FormState>();
+
+  final passwordValidator = MultiValidator([
+    RequiredValidator(errorText: 'password is required'),
+    MinLengthValidator(5, errorText: 'password must be at least 5 digits long'),
+    //PatternValidator(r'(?=.*?[#?!@$%^&*-])',
+    //  errorText: 'passwords must have at least one special character')
+  ]);
+
+  final emailValidator = MultiValidator([
+    RequiredValidator(errorText: 'email is required'),
+    MinLengthValidator(6, errorText: 'email must be at least 5 digits long'),
+    PatternValidator(r'(?=.*?[#?!@$%^&*-])',
+        errorText: 'passwords must have at least one special character')
+  ]);
+
+  Future userLogin() async {
+    var url =
+        "https://anybwnk52i.execute-api.eu-central-1.amazonaws.com/test/login";
+
+    var response =
+        await Dio().post(url, data: {'email': email, 'password': password});
+
+    var message = json.encode(response.data);
+
+    print(message);
+
+    if (response.statusCode == 200) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Empty()),
+      );
+    }
+  }
 
   void _submit() async {
     setState(() {
@@ -31,18 +68,18 @@ class _ShowmeCupertinoDialogState extends State<ShowmeCupertinoDialog> {
   }
 
   void _emailEditingComplete() {
-    final newFocus = widget.emailValidator.isValid(_email)
+    final newFocus = widget.emailValidator.isValid(email)
         ? _passwordFocusNode
         : _emailFocusNode;
     FocusScope.of(context).requestFocus(newFocus);
   }
 
-  TextField _buildPasswordTextField() {
+  TextFormField _buildPasswordTextField() {
     bool showErrorText = _submitted &&
-        !widget.passwordValidator.isValid(_password) &&
+        !widget.passwordValidator.isValid(password) &&
         !_isLoading;
 
-    return TextField(
+    return TextFormField(
       controller: _passwordController,
       focusNode: _passwordFocusNode,
       decoration: InputDecoration(
@@ -55,15 +92,16 @@ class _ShowmeCupertinoDialogState extends State<ShowmeCupertinoDialog> {
         contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
       ),
       obscureText: true,
+      validator: passwordValidator,
       textInputAction: TextInputAction.done,
       onChanged: (password) => _updateState(),
       onEditingComplete: _submit,
     );
   }
 
-  TextField _buildEmailTextField() {
-    bool showErrorText = _submitted && !widget.emailValidator.isValid(_email);
-    return TextField(
+  TextFormField _buildEmailTextField() {
+    bool showErrorText = _submitted && !widget.emailValidator.isValid(email);
+    return TextFormField(
       controller: _emailController,
       focusNode: _emailFocusNode,
       decoration: InputDecoration(
@@ -75,6 +113,7 @@ class _ShowmeCupertinoDialogState extends State<ShowmeCupertinoDialog> {
         ),
         contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
       ),
+      validator: emailValidator,
       autocorrect: false,
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
@@ -93,24 +132,30 @@ class _ShowmeCupertinoDialogState extends State<ShowmeCupertinoDialog> {
                   AppTextConstants.logintitle,
                   style: TextStyle(fontSize: 24, color: AppColor.textColor),
                 ),
-                content: Card(
-                  elevation: 0.0,
-                  color: Colors.transparent,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 24,
-                      ),
-                      _buildEmailTextField(),
-                      SizedBox(
-                        height: 24,
-                      ),
-                      _buildPasswordTextField(),
-                      SizedBox(
-                        height: 24,
-                      ),
-                      CustomElevatedButton(),
-                    ],
+                content: Form(
+                  autovalidateMode: AutovalidateMode.always,
+                  key: formkey,
+                  child: Card(
+                    elevation: 0.0,
+                    color: Colors.transparent,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 24,
+                        ),
+                        _buildEmailTextField(),
+                        SizedBox(
+                          height: 24,
+                        ),
+                        _buildPasswordTextField(),
+                        SizedBox(
+                          height: 24,
+                        ),
+                        CustomElevatedButton(
+                          onPressed: userLogin,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 actions: [],
