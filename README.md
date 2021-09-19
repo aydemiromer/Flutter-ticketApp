@@ -4,7 +4,7 @@ A new Flutter assignment.
 
 ## What I did ? 
 
-I made an application close to the given design. Apart from that, drawing and displaying data with mvvm and provider in the ticket detail field. I did the login post process directly without using status management.For the popup in the login screen of the application, I have selected it according to the platform. Cupertino for IOS, alert dialog for android is used.
+I made an application close to the given design. Apart from that, drawing and displaying data with mvvm and provider in the ticket detail field. I did the login post process directly without using status management.For the popup in the login screen of the application, I have selected it according to the platform. Cupertino for IOS, alert dialog for android is used.In general, the variables always came from fixed folders, so I tried to make a responsive design and a nice folder.
 
 ## What I couldn't create ? 
 
