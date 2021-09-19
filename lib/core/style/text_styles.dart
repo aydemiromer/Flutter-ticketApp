@@ -8,4 +8,6 @@ class AppTextStyles {
   );
   static TextStyle titeStyle = TextStyle(
       color: AppColor.textColor, fontSize: 18, fontWeight: FontWeight.w700);
+  static TextStyle ticketStyle = TextStyle(
+      color: AppColor.textColor, fontSize: 16, fontWeight: FontWeight.w500);
 }

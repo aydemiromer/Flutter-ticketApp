@@ -1,0 +1,20 @@
+{
+    "status": 200,
+    "success": true,
+    "message": "Data found",
+    "data": [{
+    "passengerName": "John Doe",
+    "seatNu": "C4",
+    "departureCity": "STU",
+    "departureBusStop": "Stuttgart Flughafen",
+    "departureTime": "22:00 pm",
+    "arrivalCity": "BER",
+    "arrivalBusStop": "Berlin ZOB",
+    "arrivalTime": "11:00 am",
+    "tourNumber": "XY-1529",
+    "date": "16-08-2021",
+    "ticketNumber": "Q2ZPK4",
+    "bookingNumber": "TSP2",
+    "qrCode": "378f8b75-4333-4e45-9e17-bebd1994951c"
+    }]
+    }

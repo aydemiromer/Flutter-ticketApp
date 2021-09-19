@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ticketapp/core/constants/color/color_theme.dart';
 import 'package:ticketapp/core/constants/text/text_constants.dart';
-import 'package:ticketapp/product/widget/cupertino_dialog.dart';
+import 'package:ticketapp/view/authenticate/login/cupertino_dialog.dart';
 
 class BottomNavigationTool extends StatelessWidget {
   @override

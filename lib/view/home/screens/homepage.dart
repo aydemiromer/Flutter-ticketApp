@@ -19,10 +19,10 @@ class _TicketHomePageState extends State<TicketHomePage> {
   @override
   void initState() {
     super.initState();
-    _populateAllMovies();
+    _populateAll();
   }
 
-  void _populateAllMovies() async {
+  void _populateAll() async {
     final ticket = await fetchAll();
     setState(() {
       _ticket = ticket;
@@ -53,7 +53,7 @@ class _TicketHomePageState extends State<TicketHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationTool(),
-      appBar: appbar,
+      appBar: _appbar,
       body: Padding(
         padding: context.paddingAllPage,
         child: Column(
@@ -111,7 +111,7 @@ class _TicketHomePageState extends State<TicketHomePage> {
   }
 }
 
-Widget get appbar => AppBar(
+Widget get _appbar => AppBar(
       backgroundColor: AppColor.primaryorange,
       leading: Icon(Icons.directions_bus),
       title: Center(child: Text(AppTextConstants.title)),

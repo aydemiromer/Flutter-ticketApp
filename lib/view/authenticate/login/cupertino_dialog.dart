@@ -4,11 +4,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import '../../core/constants/color/color_theme.dart';
-import '../../core/constants/text/text_constants.dart';
-import '../../view/home/screens/empty.dart';
-import '../service/validators.dart';
-import 'custom_sign_in_button.dart';
+import 'package:ticketapp/view/home/screens/ticket_detail.dart';
+import '../../../core/constants/color/color_theme.dart';
+import '../../../core/constants/text/text_constants.dart';
+import '../../../product/service/validators.dart';
+import '../../../product/widget/custom_sign_in_button.dart';
 
 class ShowmeCupertinoDialog extends StatefulWidget
     with EmailAndPasswordValidators {
@@ -17,6 +17,7 @@ class ShowmeCupertinoDialog extends StatefulWidget
 }
 
 class _ShowmeCupertinoDialogState extends State<ShowmeCupertinoDialog> {
+  ////Form constants
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final FocusNode _emailFocusNode = FocusNode();
@@ -26,39 +27,36 @@ class _ShowmeCupertinoDialogState extends State<ShowmeCupertinoDialog> {
   bool _submitted = false;
   bool _isLoading = false;
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
-
   final passwordValidator = MultiValidator([
     RequiredValidator(errorText: 'password is required'),
     MinLengthValidator(5, errorText: 'password must be at least 5 digits long'),
-    //PatternValidator(r'(?=.*?[#?!@$%^&*-])',
-    //  errorText: 'passwords must have at least one special character')
   ]);
-
   final emailValidator = MultiValidator([
     RequiredValidator(errorText: 'email is required'),
     MinLengthValidator(6, errorText: 'email must be at least 5 digits long'),
     PatternValidator(r'(?=.*?[#?!@$%^&*-])',
         errorText: 'passwords must have at least one special character')
   ]);
+  //
 
+  //USERLOGIN/////
   Future userLogin() async {
     var url =
         "https://anybwnk52i.execute-api.eu-central-1.amazonaws.com/test/login";
-
     var response =
         await Dio().post(url, data: {'email': email, 'password': password});
-
     var message = json.encode(response.data);
-
     print(message);
-
     if (response.statusCode == 200) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Empty()),
+        MaterialPageRoute(builder: (context) => TicketDetailPage()),
       );
+    } else if (response.statusCode == 403) {
+      print("object");
     }
   }
+  /////
 
   void _submit() async {
     setState(() {
