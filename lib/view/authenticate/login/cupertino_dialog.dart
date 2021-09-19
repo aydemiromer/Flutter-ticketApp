@@ -179,7 +179,9 @@ class _ShowmeCupertinoDialogState extends State<ShowmeCupertinoDialog> {
                       SizedBox(
                         height: 24,
                       ),
-                      CustomElevatedButton(),
+                      CustomElevatedButton(
+                        onPressed: userLogin,
+                      ),
                     ],
                   ),
                 ),
