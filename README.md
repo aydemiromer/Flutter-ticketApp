@@ -6,9 +6,6 @@ A new Flutter assignment.
 
 I made an application close to the given design. Apart from that, drawing and displaying data with mvvm and provider in the ticket detail field. I did the login post process directly without using status management.For the popup in the login screen of the application, I have selected it according to the platform. Cupertino for IOS, alert dialog for android is used.In general, the variables always came from fixed folders, so I tried to make a responsive design and a nice folder.
 
-## What I couldn't create ? 
-
-I did not make the desired post structure with the state management in the application, I immediately established the communication with the post process and when I got an error, I could not show it with the help of the validator. Validator errors are only active when the user enters values manually. Apart from that, I couldn't create the matching parts with the data and api coming from the userid, I couldn't spare time for this. I tried to get the userid directly and pull data from the api, but because the api structure is not in the form of a list, it returned null. I also created a new api for myself by adding a list structure to at least do the same with the design.
 
 
 
